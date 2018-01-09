@@ -4,7 +4,7 @@ const serveStaticFile = require('./file.js').serveStaticFile;
 
 const webapp = require('./webapp');
 
-let users = [{ user: 'nrjais' }, {user: 'arvind'}, {user : 'debuc'}, {user : 'ravinder'}];
+let users = [{ user: 'nrjais' }, { user: 'arvind' }, { user: 'debuc' }, { user: 'ravinder' }];
 let PORT = 9999;
 
 let comments = fs.readFileSync('./data/data.json', 'utf8');
@@ -13,12 +13,12 @@ comments = JSON.parse(comments);
 let app = webapp();
 
 const saveComment = function (req, res) {
-  if(isNotValidUser(req)){
+  if (isNotValidUser(req)) {
     res.redirect('/login.html');
     return;
   }
   let data = req.body;
-  if (!data.name || !data.comment){
+  if (!data.name || !data.comment) {
     res.redirect('/guestbook.html');
     return;
   }
@@ -28,8 +28,8 @@ const saveComment = function (req, res) {
   res.redirect('guestbook.html');
 };
 
-const isNotValidUser = function(req){
-  return  !(req.user && req.cookies.sessionId == req.user.sessionId);
+const isNotValidUser = function (req) {
+  return !(req.user && req.cookies.sessionId == req.user.sessionId);
 }
 
 const saveCommentsData = function () {
@@ -56,20 +56,20 @@ const sendCommentData = function (req, res) {
 
 const loadSession = function (req, res) {
   let sessionId = req.cookies.sessionId;
-  if(sessionId){
-    req.user = users.find((user)=>user.sessionId==sessionId);
+  if (sessionId) {
+    req.user = users.find((user) => user.sessionId == sessionId);
   }
 }
 
-const getUser = function(userName){
+const getUser = function (userName) {
   return users.find(user => user.user == userName);
 }
 
-const loginUser = function(req, res){
+const loginUser = function (req, res) {
   let sessionId = new Date().getTime();
   let userName = req.body.username;
   let user = getUser(userName);
-  if(user){
+  if (user) {
     user.sessionId = sessionId;
     res.setHeader('Set-Cookie', `sessionId=${sessionId}`);
     res.redirect('/guestbook.html');
@@ -78,8 +78,8 @@ const loginUser = function(req, res){
   res.redirect('/login.html');
 }
 
-const logoutUser = function(req, res){
-  if(req.user)
+const logoutUser = function (req, res) {
+  if (req.user)
     delete req.user.sessionId;
   res.setHeader('Set-Cookie', `sessionId=0; Expires=${new Date(1).toUTCString()}`);
   res.redirect('/index.html');
