@@ -1,0 +1,67 @@
+h1 {
+  font-size: 40px;
+  color: orange;
+  text-align: center;
+  margin-right: 100px;
+}
+
+#comment{
+  font-size: 20px;
+  font-weight: normal;
+}
+
+#name{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#time{
+  font-size: 22px;
+  font-weight: lighter;
+}
+
+.content{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+.input{
+  font-size: 20px;
+}
+
+button{
+  font-size: 20px;
+}
+
+.textcontent{
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#flowergif{
+  width:50%;
+  height :50%;
+}
+
+#mainImage{
+  width : 75%;
+  float: left;
+}
+
+#contentimage{
+  float: left;
+  width: 50%;
+}
+
+.sidelinks{
+  float:right;
+}
+
+.link{
+  font-size: 30px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="scripts/guestbook.js" charset="utf-8"></script>
+  <title>Guest Book</title>
+</head>
+
+<body>
+  <h1>
+    <a href="/">
+      <<</a> Guest Book</h1>
+  <div class="container">
+    <h2>Leave a comment</h2>
+    <form class="input" action="/addcomment" method="post">
+      Name :
+      <input type="text" name="name" value="">
+      <br>
+      <br> Comment :
+      <textarea name="comment" rows="4" cols="40"></textarea>
+      <br>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+    <br>
+    <hr>
+    <h2>Comments</h2>
+    <div id="comments">
+    </div>
+  </div>
+</body>
+
+</html>
