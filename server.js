@@ -5,19 +5,9 @@ const timeStamp = require('./time.js').timeStamp;
 
 const webapp = require('./webapp');
 
-let commentForm = `<a href="/logout">Logout</a>
-<h2>Leave a comment</h2>
-<form class="input" action = "/addcomment" method = "post" >
-Name : <b>NAME_USER</b>
-<br>
-<br> Comment :
-<textarea name="comment" rows="4" cols="40"></textarea>
-<br>
-<br>
-<button type="submit">Submit</button>
-</form>`;
+let commentForm = fs.readFileSync('templates/commentForm.html', 'utf8');
 
-let loginButton = `<h2>Login to comment</h2><a href="/login.html">Login</a>`;
+let loginButton = fs.readFileSync('templates/loginButton.html', 'utf8');
 
 let users = [{ user: 'nrjais', name:"Neeraj Jaiswal"}];
 let PORT = 9999;
@@ -108,7 +98,7 @@ const logoutUser = function (req, res) {
 }
 
 const serveGuestbook = function (req, res) {
-  let page = fs.readFileSync('public/guestbook.html', 'utf8')
+  let page = fs.readFileSync('templates/guestbook.html', 'utf8')
   if (isUserLoggedIn(req)) {
     let userName = req.user.name;
     commentFormUser = commentForm.replace('NAME_USER', userName);
